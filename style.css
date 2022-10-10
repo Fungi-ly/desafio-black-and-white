@@ -1,0 +1,82 @@
+:root {
+	--clr-primary: rgb(255, 255, 255);
+	--clr-bg: rgb(0, 0, 0);
+}
+
+
+
+body {
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+	background: var(--clr-bg);
+	font-family: 'Balsamiq Sans', cursive;
+	color: var(--clr-primary);
+}
+.input-container {
+   padding-bottom: 1em;
+}
+.input-container input {
+	width: 18em;
+   height: 2em;
+   border-radius: .125em;
+   border: none;
+}
+.btn {
+   background: none;
+	font: inherit;
+	outline: inherit;
+	font-size: 1rem;
+	cursor: pointer;
+	color: var(--clr-primary);
+	border: var(--clr-primary) 0.125em solid;
+	padding: 0.25em 1em;
+	border-radius: 0.25em;
+	text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+	box-shadow: inset 0 0 0.5em 0 var(--clr-primary), 0 0 0.5em 0 var(--clr-primary);
+	position: relative;
+}
+
+.btn::before {
+	pointer-events: none;
+	content: '';
+	position: absolute;
+	background: var(--clr-primary);
+	top: 120%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+	filter: blur(1em);
+	opacity: 0.7;
+}
+
+.btn::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: 0 0 2em 0.5em var(--clr-primary);
+	opacity: 0;
+	background-color: var(--clr-primary);
+	z-index: -1;
+	transition: opacity 100ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+	color: var(--clr-bg);
+	text-shadow: none;
+}
+
+.btn:hover::before,
+.btn:focus::before {
+	opacity: 1;
+}
+.btn:hover::after,
+.btn:focus::after {
+	opacity: 1;
+}
